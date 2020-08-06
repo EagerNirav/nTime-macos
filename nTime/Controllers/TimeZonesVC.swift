@@ -22,6 +22,23 @@ class TimeZonesVC: NSViewController {
         // Do view setup here.
         srlTimeZones.isHidden = true
         viwGetStarted.isHidden = false
+        /*
+        var entry = UserAccount.Entries.getEmptyEntry()
+        entry.Name = "Test 1"
+        entry.Location = "Mumbai"
+        entry.TimeZone = "+5:30 GMT"
+        entry.Image = NSImage.init(named: "DefaultProfileImage")!
+        
+        _ = UserAccount.Entries.addEntry(entry: entry)
+        
+        entry = UserAccount.Entries.getEmptyEntry()
+        entry.Name = "Test 2"
+        entry.Location = "New York"
+        entry.TimeZone = "-12:00 GMT"
+        
+        _ = UserAccount.Entries.addEntry(entry: entry)
+        */
+        //print(UserAccount.Entries.getAllEntries())
     }
     
     @IBAction func btnAdd_Tapped(_ sender: Any) {

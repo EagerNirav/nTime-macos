@@ -28,6 +28,7 @@
 		19DA619824D8AB2B0028483D /* ConfigRelease.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19DA619624D8AB2B0028483D /* ConfigRelease.xcconfig */; };
 		19DA619A24D8AB3C0028483D /* ConfigDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19DA619924D8AB3C0028483D /* ConfigDebug.xcconfig */; };
 		19DA619B24D8AB3C0028483D /* ConfigDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 19DA619924D8AB3C0028483D /* ConfigDebug.xcconfig */; };
+		19F41E7324DC740E00BF20DD /* EntryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F41E7224DC740E00BF20DD /* EntryObject.swift */; };
 		41040C0267117A12BECA19C6 /* Pods_nTime_nTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C30E3FBFDAAB958E83907C /* Pods_nTime_nTimeUITests.framework */; };
 		EC6908AC5FC1EE766A1CBBAB /* Pods_nTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EDB66AA8204BFF67643616 /* Pods_nTime.framework */; };
 		F10DE4AAF8B9283C2C75395C /* Pods_nTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CA484414774C9598C9BEAB /* Pods_nTimeTests.framework */; };
@@ -94,6 +95,7 @@
 		19DA619024D843B40028483D /* TimeZonesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZonesVC.swift; sourceTree = "<group>"; };
 		19DA619624D8AB2B0028483D /* ConfigRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigRelease.xcconfig; sourceTree = "<group>"; };
 		19DA619924D8AB3C0028483D /* ConfigDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDebug.xcconfig; sourceTree = "<group>"; };
+		19F41E7224DC740E00BF20DD /* EntryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryObject.swift; sourceTree = "<group>"; };
 		22EDB66AA8204BFF67643616 /* Pods_nTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C5B94D005AEC3B1FC4EAB27 /* Pods-nTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nTimeTests.release.xcconfig"; path = "Target Support Files/Pods-nTimeTests/Pods-nTimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E9CDB1A5CCA2B22C2C7E189 /* Pods-nTime-nTimeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nTime-nTimeUITests.debug.xcconfig"; path = "Target Support Files/Pods-nTime-nTimeUITests/Pods-nTime-nTimeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				19B32E0D24DAC6F400F1E114 /* UserAccount.swift */,
 				1955608F24DBFA150037600A /* Preferences.swift */,
+				19F41E7224DC740E00BF20DD /* EntryObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				195B33B324D9DB5400ADF748 /* NTCore.swift in Sources */,
+				19F41E7324DC740E00BF20DD /* EntryObject.swift in Sources */,
 				1903454E24D945E90083CE9F /* ENColoredView.swift in Sources */,
 				19B32E0E24DAC6F400F1E114 /* UserAccount.swift in Sources */,
 				19B32E0C24DA8F7500F1E114 /* ENCFuncs.swift in Sources */,

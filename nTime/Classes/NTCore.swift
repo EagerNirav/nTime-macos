@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 typealias ObjectDictionary = Dictionary<String, Any>
+typealias ArrayOfEntryObjects = Array<EntryObject>
 typealias ArrayOfObjectDictionaries = Array<ObjectDictionary>
 
 final class NTCore {
@@ -29,21 +30,21 @@ final class NTCore {
     
     
     static let defEntry: ObjectDictionary = [
-        "entry_id": UUID().uuidString,
+        "entryid": UUID().uuidString,
         "name": "Unknown",
         "location": "",
         "timezone": "",
-        "image": NSImage.init(named: "DefaultEntryImage")!,
+        "image": NSImage.init(named: "DefaultEntryImage")!.tiffRepresentation!,
     ]
     
     
     static let defAccount: ObjectDictionary = [
-        "account_id": UUID().uuidString,
+        "accountid": UUID().uuidString,
         "name": "Anonymous",
         "location": "",
         "timezone": "",
-        "profileimage": NSImage.init(named: "DefaultProfileImage")!,
-        "entries": NSMutableArray.init()
+        "profileimage": NSImage.init(named: "DefaultProfileImage")!.tiffRepresentation!,
+        "entries": ArrayOfObjectDictionaries.init()
     ]
     
     static let defPreferences: ObjectDictionary = [
@@ -58,6 +59,12 @@ final class NTCore {
     var account:ObjectDictionary = NTCore.defAccount
     
     var preferences:ObjectDictionary = NTCore.defPreferences
+    
+    func clearUserDefaults() {
+        let domain = Bundle.main.bundleIdentifier!
+        ud.removePersistentDomain(forName: domain)
+        ud.synchronize()
+    }
     
     static func openGithubPage() {
         if let url = URL(string: Bundle.main.infoDictionary?["GithubUrl"] as! String) {
@@ -94,7 +101,7 @@ final class NTCore {
         ud.setValue(preferences, forKey: "preferences")
     }
     func saveAccountToStorage() {
-        ud.setValue(preferences, forKey: "account")
+        ud.setValue(account, forKey: "account")
     }
     
     func loadPreferencesFromStorage() {

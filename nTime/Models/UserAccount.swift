@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 fileprivate struct AccountFields {
+    static let AccountId:String = "accountid"
     static let Name:String = "name"
     static let Location:String = "location"
     static let TimeZone:String = "timezone"
@@ -17,18 +18,21 @@ fileprivate struct AccountFields {
     static let Entries:String = "entries"
 }
 
-fileprivate struct EntryFields {
-    static let Name:String = "name"
-    static let Location:String = "location"
-    static let TimeZone:String = "timezone"
-    static let Image:String = "image"
-}
-
 
 struct UserAccount {
     fileprivate typealias AF = AccountFields
 
     private init() { }
+    
+    static var AccountId:String {
+        get {
+            return NTCore.shared.account[AF.AccountId] as! String
+        }
+        set {
+            NTCore.shared.account[AF.AccountId] = newValue
+            self.saveToStorage()
+        }
+    }
     
     static var Name:String {
         get {
@@ -79,11 +83,13 @@ struct UserAccount {
     }
     
     static func saveToStorage() {
+        NTCore.shared.account[AF.Entries] = Self.Entries.list
         NTCore.shared.saveAccountToStorage()
     }
     
     static func loadFromStorage() {
         NTCore.shared.loadAccountFromStorage()
+        //self.Entries.list = NTCore.shared.account[AF.Entries] as! ArrayOfEntryObjects
     }
     
     static func reset() {
@@ -93,53 +99,55 @@ struct UserAccount {
     
 
     struct Entries {
-        fileprivate typealias EF = EntryFields
         
         private init() { }
         
         fileprivate static var list = NTCore.shared.account[AF.Entries] as! ArrayOfObjectDictionaries
         
-        static func entryAt(index: Int) -> ObjectDictionary? {
+        static func entryAt(index: Int) -> EntryObject? {
             if (list.count>index) {
-                return list[index]
+                return EntryObject.init(entry: list[index])
             }
             return nil
         }
         
-        static func count() -> Int {
-            return list.count
+        static var count:Int {
+            get {
+                return list.count
+            }
         }
         
-        static func getEmptyEntry() -> ObjectDictionary {
-            return NTCore.defEntry
-        }
-        
-        static func addEntry(entry:ObjectDictionary) -> ArrayOfObjectDictionaries {
-            list.append(entry)
-            return self.getAllEntries()
-        }
-        
-        static func removeEntryAt(index:Int) -> ObjectDictionary {
-            let entry = list[index]
-            list.remove(at: index)
+        static func getEmptyEntry() -> EntryObject {
+            var entry = EntryObject.init(entry: NTCore.defEntry)
+            entry.EntryId = UUID().uuidString
             return entry
         }
         
-        static func getAllEntries() -> ArrayOfObjectDictionaries {
-            return list
+        static func addEntry(entry:EntryObject) -> ArrayOfEntryObjects {
+            list.append(entry.OriginalObject)
+            return self.getAllEntries()
         }
         
-        static func saveToStorage() {
-            UserAccount.saveToStorage()
+        static func removeEntryAt(index:Int) -> EntryObject {
+            let entry = list[index]
+            list.remove(at: index)
+            return EntryObject.init(entry: entry)
         }
         
-        static func loadFromStorage() {
-            UserAccount.loadFromStorage()
+        static func getAllEntries() -> ArrayOfEntryObjects {
+            var EntryObjectList = ArrayOfEntryObjects.init()
+            list.forEach { (entry) in
+                EntryObjectList.append(EntryObject.init(entry: entry))
+            }
+            return EntryObjectList
         }
         
         static func reset() {
-            NTCore.shared.account[AF.Entries] = ArrayOfObjectDictionaries.init()
-            self.saveToStorage()
+            self.list = ArrayOfObjectDictionaries.init()
+        }
+        
+        static func getOriginalList() -> ArrayOfObjectDictionaries {
+            return list
         }
         
     }
