@@ -1,0 +1,14 @@
+//
+//  ConfigRelease.xcconfig
+//  nTime
+//
+//  Created by Nirav Shah on 04/08/20.
+//  Copyright © 2020 Nirav Shah. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Pods/Target Support Files/Pods-nTime/Pods-nTime.release.xcconfig"
+#include "Pods/Target Support Files/Pods-nTimeTests/Pods-nTimeTests.release.xcconfig"
+
+GoogleAPIKey = "<Replace_Your_RELEASE_API_Key_Here>"
