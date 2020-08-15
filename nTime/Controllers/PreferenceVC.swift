@@ -68,6 +68,7 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
         chkKeepTimeZonesListOpen.state = Preferences.KeepTimeZonesListOpen ? .on : .off
         chkShowLiveTimeInMenuBar.state = Preferences.ShowLiveTimeInMenuBar ? .on : .off
         coDateTimeFormat.stringValue = Preferences.DateTimeFormat
+        self.updateDateTimeExample()
     }
     
     @IBAction func chkShowLiveTimeInMenuBar_Tapped(_ sender: NSButton) {
@@ -163,6 +164,7 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
             switch co {
             case coDateTimeFormat:
                 Preferences.DateTimeFormat = co.stringValue
+                self.updateDateTimeExample()
                 break
             default:
                 break
@@ -170,6 +172,15 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
         }
     }
     
+    
+    func updateDateTimeExample() {
+        let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = Preferences.DateTimeFormat
+
+        let timeoutput = "\(dateFormatter.string(from: Date()))"
+               
+        lblDTFormatExample.stringValue = timeoutput
+    }
     
     
 }

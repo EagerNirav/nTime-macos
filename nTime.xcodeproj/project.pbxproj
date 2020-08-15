@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1903454E24D945E90083CE9F /* ENColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1903454D24D945E90083CE9F /* ENColoredView.swift */; };
+		192344C524E6E03B0007779D /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192344C424E6E03B0007779D /* EntryView.swift */; };
 		1955609024DBFA150037600A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1955608F24DBFA150037600A /* Preferences.swift */; };
 		195B33B324D9DB5400ADF748 /* NTCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195B33B224D9DB5400ADF748 /* NTCore.swift */; };
 		195B33B524D9EE8E00ADF748 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195B33B424D9EE8E00ADF748 /* AboutVC.swift */; };
@@ -68,6 +69,7 @@
 		07C53EE988DB9951CA43C60A /* Pods-nTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nTime.release.xcconfig"; path = "Target Support Files/Pods-nTime/Pods-nTime.release.xcconfig"; sourceTree = "<group>"; };
 		14E3BBB925A2D13C779BAE1F /* Pods-nTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nTimeTests.debug.xcconfig"; path = "Target Support Files/Pods-nTimeTests/Pods-nTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1903454D24D945E90083CE9F /* ENColoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENColoredView.swift; sourceTree = "<group>"; };
+		192344C424E6E03B0007779D /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		1955608F24DBFA150037600A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		195B33B224D9DB5400ADF748 /* NTCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCore.swift; sourceTree = "<group>"; };
 		195B33B424D9EE8E00ADF748 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 			path = IBElements;
 			sourceTree = "<group>";
 		};
+		192344C324E6E0160007779D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				192344C424E6E03B0007779D /* EntryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		195B33B124D9DB4500ADF748 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +216,7 @@
 		19D54E0724D841F600609F30 /* nTime */ = {
 			isa = PBXGroup;
 			children = (
+				192344C324E6E0160007779D /* Views */,
 				195B33B124D9DB4500ADF748 /* Classes */,
 				1903454C24D945B80083CE9F /* IBElements */,
 				19DA619224D8AA900028483D /* Configs */,
@@ -535,6 +546,7 @@
 				19DA618F24D8434F0028483D /* PreferenceVC.swift in Sources */,
 				19DA619124D843B40028483D /* TimeZonesVC.swift in Sources */,
 				1955609024DBFA150037600A /* Preferences.swift in Sources */,
+				192344C524E6E03B0007779D /* EntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

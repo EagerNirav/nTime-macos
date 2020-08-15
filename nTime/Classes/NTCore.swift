@@ -51,7 +51,7 @@ final class NTCore {
         "keeptimezoneslistopen": false,
         "showlivetimeinmenubar": false,
         "livetimeentryid": 0,
-        "datetimeformat": "hh:mm a",
+        "datetimeformat": "E d MMM, yyyy hh:mm a",
     ]
     
     private let ud = UserDefaults.standard

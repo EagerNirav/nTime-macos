@@ -105,7 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         if let data = data as? NSDictionary {
-            TimeZonesVC.shared.entries = NSArray.init(object: data)
+            //TimeZonesVC.shared.entries = NSArray.init(object: data)
             _ = ENCFuncs.alert(title: "Import Successful", message: "Data successfully imported")
         }
     }
