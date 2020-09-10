@@ -15,6 +15,9 @@ fileprivate struct EntryFields {
     static let Location:String = "location"
     static let TimeZone:String = "timezone"
     static let Image:String = "image"
+    static let DSTOffset:String = "dstoffset"
+    static let RawOffset:String = "rawoffset"
+    static let TimeZoneId:String = "timezoneid"
 }
 
 struct EntryObject:Codable {
@@ -70,6 +73,34 @@ struct EntryObject:Codable {
             _entry[EF.TimeZone] = newValue
         }
     }
+    
+    var DSTOffset:Int {
+        get {
+            return _entry[EF.DSTOffset] as! Int
+        }
+        set {
+            _entry[EF.DSTOffset] = newValue
+        }
+    }
+    
+    var RawOffset:Int {
+        get {
+            return _entry[EF.RawOffset] as! Int
+        }
+        set {
+            _entry[EF.RawOffset] = newValue
+        }
+    }
+    
+    var TimeZoneId:String {
+        get {
+            return _entry[EF.TimeZoneId] as! String
+        }
+        set {
+            _entry[EF.TimeZoneId] = newValue
+        }
+    }
+    
     
     var Image: NSImage {
         get {

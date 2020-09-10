@@ -257,16 +257,14 @@
                                         </button>
                                         <comboBox verticalHuggingPriority="750" allowsExpansionToolTips="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRI-l0-zbP">
                                             <rect key="frame" x="39" y="123" width="257" height="27"/>
-                                            <comboBoxCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Select live time for" bezelStyle="round" completes="NO" numberOfVisibleItems="5" id="zCi-km-1Vw">
+                                            <comboBoxCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Select live time for" bezelStyle="round" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="zCi-km-1Vw">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>Item 1</string>
-                                                    <string>Item 2</string>
-                                                    <string>Item 3</string>
-                                                </objectValues>
                                             </comboBoxCell>
+                                            <connections>
+                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="wdP-Ua-E8d"/>
+                                            </connections>
                                         </comboBox>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-7P-LDa">
                                             <rect key="frame" x="18" y="154" width="277" height="18"/>

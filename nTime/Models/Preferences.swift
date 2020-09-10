@@ -40,9 +40,9 @@ struct Preferences {
         }
     }
     
-    static var LiveTimeEntryId:Int {
+    static var LiveTimeEntryId:String {
         get {
-            return NTCore.shared.preferences[PF.LiveTimeEntryId] as! Int
+            return NTCore.shared.preferences[PF.LiveTimeEntryId] as! String
         }
         set {
             NTCore.shared.preferences[PF.LiveTimeEntryId] = newValue

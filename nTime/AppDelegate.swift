@@ -27,6 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         _ = NTCore.shared // Ensures NTCore is initialized and ready with data
+        //NTCore.shared.resetPreferences()
+        //NTCore.shared.savePreferencesToStorage()
         self.setupStatusItem()
         self.setupPopover()
     }
@@ -104,7 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             _ = ENCFuncs.alert(title: "Invalid Data File",message: "Could not load data, please ensure it is the correct file")
             return
         }
-        if let data = data as? NSDictionary {
+        if data is NSDictionary {
             //TimeZonesVC.shared.entries = NSArray.init(object: data)
             _ = ENCFuncs.alert(title: "Import Successful", message: "Data successfully imported")
         }

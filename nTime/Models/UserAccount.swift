@@ -117,6 +117,28 @@ struct UserAccount {
             }
         }
         
+        static func indexOf(entryId: String) -> Int {
+            var cnt = 0
+            for entry in list {
+                let entryObj = EntryObject.init(entry: entry)
+                if(entryObj.EntryId == entryId) {
+                    return cnt
+                }
+                cnt += 1
+            }
+            return -1
+        }
+        
+        static func getEntryBy(Id:String) -> EntryObject? {
+            for entry in list {
+                let entryObj = EntryObject.init(entry: entry)
+                if(entryObj.EntryId == Id) {
+                    return entryObj
+                }
+            }
+            return nil
+        }
+        
         static func getEmptyEntry() -> EntryObject {
             var entry = EntryObject.init(entry: NTCore.defEntry)
             entry.EntryId = UUID().uuidString

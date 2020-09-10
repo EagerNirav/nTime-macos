@@ -34,6 +34,9 @@ final class NTCore {
         "name": "Unknown",
         "location": "",
         "timezone": "",
+        "dstoffset": 0,
+        "rawoffset": 0,
+        "timezoneid": "",
         "image": NSImage.init(named: "DefaultEntryImage")!.tiffRepresentation!,
     ]
     
@@ -50,7 +53,7 @@ final class NTCore {
     static let defPreferences: ObjectDictionary = [
         "keeptimezoneslistopen": false,
         "showlivetimeinmenubar": false,
-        "livetimeentryid": 0,
+        "livetimeentryid": "",
         "datetimeformat": "E d MMM, yyyy hh:mm a",
     ]
     

@@ -9,7 +9,7 @@
 import Cocoa
 import ServiceManagement
 
-class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
+class PreferenceVC: NSViewController, NSComboBoxDataSource, NSComboBoxDelegate, NSTextFieldDelegate {
 
     let helperBundleName = Bundle.main.infoDictionary?["nTime-StartUpHelperBundleID"] as! String
 
@@ -68,6 +68,14 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
         chkKeepTimeZonesListOpen.state = Preferences.KeepTimeZonesListOpen ? .on : .off
         chkShowLiveTimeInMenuBar.state = Preferences.ShowLiveTimeInMenuBar ? .on : .off
         coDateTimeFormat.stringValue = Preferences.DateTimeFormat
+        coLiveTimeSelector.isEnabled = Preferences.ShowLiveTimeInMenuBar
+        if(UserAccount.Entries.count>0){
+            let index = UserAccount.Entries.indexOf(entryId: Preferences.LiveTimeEntryId)
+            if(index>=0){
+                coLiveTimeSelector.selectItem(at: index)
+            }
+            
+        }
         self.updateDateTimeExample()
     }
     
@@ -137,7 +145,9 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
             print("DateTime " + (co.objectValueOfSelectedItem! as! String))
             break
         case coLiveTimeSelector:
-            print("Live Time " + (co.objectValueOfSelectedItem! as! String))
+            //print("Live Time " + (co.objectValueOfSelectedItem! as! String))
+            //print(co.indexOfSelectedItem)
+            Preferences.LiveTimeEntryId = UserAccount.Entries.entryAt(index: co.indexOfSelectedItem)!.EntryId
             break
         default:
             break
@@ -163,8 +173,14 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
         if let co = obj.object as? NSComboBox {
             switch co {
             case coDateTimeFormat:
-                Preferences.DateTimeFormat = co.stringValue
-                self.updateDateTimeExample()
+                if(co.stringValue != "") {
+                    Preferences.DateTimeFormat = co.stringValue
+                    self.updateDateTimeExample()
+                }
+                else{
+                    Preferences.DateTimeFormat = co.itemObjectValue(at: 0) as! String
+                    lblDTFormatExample.stringValue = "Please provide the date time format"
+                }
                 break
             default:
                 break
@@ -180,6 +196,14 @@ class PreferenceVC: NSViewController, NSComboBoxDelegate, NSTextFieldDelegate {
         let timeoutput = "\(dateFormatter.string(from: Date()))"
                
         lblDTFormatExample.stringValue = timeoutput
+    }
+    
+    func numberOfItems(in comboBox: NSComboBox) -> Int {
+        return UserAccount.Entries.count
+    }
+    
+    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+        return UserAccount.Entries.entryAt(index: index)?.Name
     }
     
     
