@@ -12,6 +12,7 @@
 		1955609024DBFA150037600A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1955608F24DBFA150037600A /* Preferences.swift */; };
 		195B33B324D9DB5400ADF748 /* NTCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195B33B224D9DB5400ADF748 /* NTCore.swift */; };
 		195B33B524D9EE8E00ADF748 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195B33B424D9EE8E00ADF748 /* AboutVC.swift */; };
+		198DDCE0254B51BB00D62095 /* EntryDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198DDCDF254B51BB00D62095 /* EntryDetailsVC.swift */; };
 		19B32E0C24DA8F7500F1E114 /* ENCFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B32E0B24DA8F7500F1E114 /* ENCFuncs.swift */; };
 		19B32E0E24DAC6F400F1E114 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B32E0D24DAC6F400F1E114 /* UserAccount.swift */; };
 		19B32E2A24DBF11E00F1E114 /* LaunchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B32E2924DBF11E00F1E114 /* LaunchDelegate.swift */; };
@@ -73,6 +74,7 @@
 		1955608F24DBFA150037600A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		195B33B224D9DB5400ADF748 /* NTCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTCore.swift; sourceTree = "<group>"; };
 		195B33B424D9EE8E00ADF748 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		198DDCDF254B51BB00D62095 /* EntryDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsVC.swift; sourceTree = "<group>"; };
 		19B32E0B24DA8F7500F1E114 /* ENCFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCFuncs.swift; sourceTree = "<group>"; };
 		19B32E0D24DAC6F400F1E114 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		19B32E2724DBF11E00F1E114 /* nTime-StartUpHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nTime-StartUpHelper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 				19DA618E24D8434F0028483D /* PreferenceVC.swift */,
 				19DA619024D843B40028483D /* TimeZonesVC.swift */,
 				195B33B424D9EE8E00ADF748 /* AboutVC.swift */,
+				198DDCDF254B51BB00D62095 /* EntryDetailsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198DDCE0254B51BB00D62095 /* EntryDetailsVC.swift in Sources */,
 				195B33B324D9DB5400ADF748 /* NTCore.swift in Sources */,
 				19F41E7324DC740E00BF20DD /* EntryObject.swift in Sources */,
 				1903454E24D945E90083CE9F /* ENColoredView.swift in Sources */,

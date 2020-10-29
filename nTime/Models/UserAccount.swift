@@ -83,17 +83,18 @@ struct UserAccount {
     }
     
     static func saveToStorage() {
-        NTCore.shared.account[AF.Entries] = Self.Entries.list
+        NTCore.shared.account[AF.Entries] = self.Entries.list
         NTCore.shared.saveAccountToStorage()
     }
     
     static func loadFromStorage() {
         NTCore.shared.loadAccountFromStorage()
-        //self.Entries.list = NTCore.shared.account[AF.Entries] as! ArrayOfEntryObjects
+        self.Entries.list = NTCore.shared.account[AF.Entries] as! ArrayOfObjectDictionaries
     }
     
     static func reset() {
         NTCore.shared.resetAccount()
+        self.Entries.reset()
         self.saveToStorage()
     }
     
@@ -129,10 +130,10 @@ struct UserAccount {
             return -1
         }
         
-        static func getEntryBy(Id:String) -> EntryObject? {
+        static func getEntryBy(entryId:String) -> EntryObject? {
             for entry in list {
                 let entryObj = EntryObject.init(entry: entry)
-                if(entryObj.EntryId == Id) {
+                if(entryObj.EntryId == entryId) {
                     return entryObj
                 }
             }
@@ -146,7 +147,13 @@ struct UserAccount {
         }
         
         static func addEntry(entry:EntryObject) -> ArrayOfEntryObjects {
-            list.append(entry.OriginalObject)
+            if let _ = getEntryBy(entryId: entry.EntryId) {
+                let i = self.removeEntryBy(entryId: entry.EntryId)
+                list.insert(entry.OriginalObject, at: i)
+            }
+            else {
+                list.append(entry.OriginalObject)
+            }
             return self.getAllEntries()
         }
         
@@ -154,6 +161,12 @@ struct UserAccount {
             let entry = list[index]
             list.remove(at: index)
             return EntryObject.init(entry: entry)
+        }
+        
+        static func removeEntryBy(entryId:String) -> Int {
+            let i = indexOf(entryId: entryId)
+            _ = removeEntryAt(index: i)
+            return i
         }
         
         static func getAllEntries() -> ArrayOfEntryObjects {

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource, EntryViewDelegate {
     
     @IBOutlet weak var srlTimeZones: NSScrollView!
     @IBOutlet weak var viwGetStarted: NSView!
@@ -25,8 +25,6 @@ class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        srlTimeZones.isHidden = false
-        viwGetStarted.isHidden = true
         /*
         var entry = UserAccount.Entries.getEmptyEntry()
         entry.Name = "Test 1"
@@ -43,7 +41,20 @@ class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource 
         
         _ = UserAccount.Entries.addEntry(entry: entry)
         */
+        
         print(UserAccount.Entries.count)
+    }
+    
+    func refreshList() {
+        tblTimeZones.reloadData()
+        if(UserAccount.Entries.count>0) {
+            srlTimeZones.isHidden = false
+            viwGetStarted.isHidden = true
+        }
+        else {
+            srlTimeZones.isHidden = true
+            viwGetStarted.isHidden = false
+        }
     }
     
     @objc func updateSystemTime() {
@@ -73,7 +84,9 @@ class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource 
         
         Timer.scheduledTimer(timeInterval: 1.0, target: TimeZonesVC.shared, selector: #selector(TimeZonesVC.shared.updateSystemTime), userInfo: nil, repeats: true)
         self.updateSystemTime()
-        //tblTimeZones.reloadData()
+        
+        self.view.window?.makeFirstResponder(btnSystemTime)
+        self.refreshList()
     }
     
     override func viewDidDisappear() {
@@ -82,6 +95,9 @@ class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource 
     }
     
     @IBAction func btnAdd_Tapped(_ sender: Any) {
+        let win = EntryDetailsVC.shared
+        EntryDetailsVC.entryController?.loadEntryDetails(entry: nil)
+        win.showWindow(nil)
     }
     
     @IBAction func btnSearch_Tapped(_ sender: Any) {
@@ -100,12 +116,23 @@ class TimeZonesVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource 
         guard let cellView = tblTimeZones.makeView(withIdentifier: cellIdentifier, owner: self) as? EntryView else { return nil }
         
         cellView.loadEntryDetails(entry: UserAccount.Entries.entryAt(index: row)!)
+        cellView.delegate = self
         return cellView
     }
     
     
     
+    func removeEntry(entry: EntryObject) {
+        _ = UserAccount.Entries.removeEntryBy(entryId: entry.EntryId)
+        UserAccount.saveToStorage()
+        self.refreshList()
+    }
     
+    func entryClicked(entry: EntryObject) {
+        let win = EntryDetailsVC.shared
+        EntryDetailsVC.entryController?.loadEntryDetails(entry: entry)
+        win.showWindow(nil)
+    }
     
     
     

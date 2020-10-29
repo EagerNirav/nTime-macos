@@ -126,6 +126,7 @@ class PreferenceVC: NSViewController, NSComboBoxDataSource, NSComboBoxDelegate, 
         if let imageFilePath = ENCFuncs.showOpenDialog(allowedFileTypes: ["png","jpg","jpeg"], prompt: "Set as Profile Image") {
             imgUserProfile.image = NSImage.init(contentsOf: imageFilePath)
             UserAccount.ProfileImage = imgUserProfile.image!
+            btnRemoveProfileImage.isHidden = self.hasDefaultProfileImage()
         }
     }
     
